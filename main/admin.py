@@ -4,6 +4,6 @@ from django.contrib import admin
 
 #Piemērs kā reģistrēt:
 
-#from .models import Question
+from .models import Article
 
-#admin.site.register(Question)
+admin.site.register(Article)
