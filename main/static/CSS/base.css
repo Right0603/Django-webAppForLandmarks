@@ -1,0 +1,18 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*.main-container{
+    position: relative;
+}
+
+.footer{
+    position: absolute;
+    bottom:0;
+}*/
+
+.article-item{
+    max-width: 1296px;
+    margin: auto;
+}

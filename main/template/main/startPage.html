@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
+{% block title %} Sākumlapa {% endblock title %}
+
 {% block content %}
     {% for article in articles %}
-   <h3>{{ article.title }}</h3>
-    <p>{{article.text}}</p>
-    <img src="{{ article.image.url }}"> 
+   <div class="article-item py-3 mb-4">
+        <h3>{{ article.title }}</h3>
+        <p>{{article.text}}</p>
+   </div>
     {% endfor %}
 {% endblock content %}
