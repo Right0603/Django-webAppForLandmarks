@@ -16,3 +16,12 @@ body{
     max-width: 1296px;
     margin: auto;
 }
+
+.article-link{
+    text-decoration: none;
+    color: black;
+}
+
+.article-block{
+    background-color: lightgray;
+}

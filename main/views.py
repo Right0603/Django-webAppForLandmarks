@@ -10,10 +10,8 @@ def index(request):
 
 
 def article(request, article_id):
-    data = {
-        "text": f"This is article number {article_id}"
-    }
-    return render(request, "article.html", context=data )
+    data = Article.objects.get(id=article_id)
+    return render(request, "article.html", {"article": data})
 
 def create(request):
     return render(request, "createArticle.html")
