@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 from .forms import ArticleForm
 
@@ -19,6 +19,7 @@ def create(request):
         form = ArticleForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect(index)
             
     context={'form':form}
     return render(request, "createArticle.html", context)
