@@ -20,11 +20,17 @@
         </a>
   
         <ul class="nav nav-pills my-auto">
+          {% if user.is_authenticated %}
           <li class="nav-item"><a href="{% url 'create' %}" class="nav-link text-dark" aria-current="page">Pievienot rakstu!</a></li>
+          {% endif %}
           <li class="nav-item"><a href="#" class="nav-link text-dark">Latvijā</a></li>
           <li class="nav-item"><a href="#" class="nav-link text-dark">Ārzemēs</a></li>
           <li class="nav-item"><a href="{% url 'aboutUs' %}" class="nav-link text-dark font-weight-bold">Par mums</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Ieiet!</a></li>
+          {% if user.is_authenticated %}
+          <li class="nav-item"><a href="/auth/logout/" class="nav-link text-dark">Iziet!</a></li>
+          {% else %}
+          <li class="nav-item"><a href="/auth/login/" class="nav-link text-dark">Ieiet!</a></li>
+          {% endif %}
         </ul>
       </header>
     

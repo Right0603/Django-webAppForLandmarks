@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Reģistrēšanās{% endblock title %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <p>Jūs jau esat reģistrējušies? Ielogojaties <a href="/auth/login/">šeit!</a> </p>
+        <button type="submit" class="btn btn-success">Reģistrējies!</button>
+    </form>
+{% endblock content %}
