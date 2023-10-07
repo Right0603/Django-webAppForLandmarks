@@ -4,5 +4,18 @@
 
 {% block content %}
     <h3>{{ article.title }}</h3>
+    <hr>
+    {% if article.author == user %}
+    <p>
+        <a href="{% url 'edit' article.id %}" class="link-secondary">Rediģēt rakstu</a> | 
+        <a href="{% url 'delete' article.id %}" class="link-secondary">Dzēst rakstu</a>
+    </p>
+    {% endif %}
+    <br>
     <p>{{ article.text }}</p>
+    {% for image in images %}
+        <div class="col-md-4">
+            <img src="{{ image.image.url }}" class="img-fluid" alt="Image">
+        </div>
+    {% endfor %}
 {% endblock content %}
