@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import datetime
 
 class Category(models.Model):
-   title = models.CharField(max_length=30)
+   title = models.CharField(max_length=60)
    description = models.TextField(blank=True, null=True)
 
    def __str__(self):
@@ -13,7 +13,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 class Article(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=60)
     text = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)

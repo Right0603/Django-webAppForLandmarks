@@ -4,6 +4,4 @@ Tiek paredzēts izstrādāt nelielu portālu, kur iekviens varēs izlasīt rakst
 Pievienot rakstus būs iespēja ikvienam autorizētam lietotājam.
 Raksti tiks sadalīti pa kategorijām.
 
-main
-article_manager
-authentification
+

@@ -3,20 +3,6 @@ body{
     padding: 0px;
 }
 
-/*.main-container{
-    position: relative;
-}
-
-.footer{
-    position: absolute;
-    bottom:0;
-}*/
-
-.article-item{
-    max-width: 1296px;
-    margin: auto;
-}
-
 .article-link{
     text-decoration: none;
     color: black;
@@ -24,4 +10,9 @@ body{
 
 .article-block{
     background-color: lightgray;
+}
+
+.category-description{
+    font-weight: bold !important;
+    font-style: italic !important;
 }

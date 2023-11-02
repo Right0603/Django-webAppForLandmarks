@@ -1,15 +1,16 @@
 from django.contrib import admin
 
-from main.forms import ArticleForm
 
 # Register your models here.
 
-from .models import Article, Category, Image
+from .models import *
 
 
 admin.site.register(Category)
 
-admin.site.register(Article)
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display=("title", "category", "author", "pub_date")
 
 admin.site.register(Image)
 

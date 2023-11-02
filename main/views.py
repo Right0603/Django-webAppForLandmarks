@@ -1,17 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Article
 from .forms import ArticleForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
-from .models import Article, Image
+from django.core.paginator import Paginator
+from .models import Article, Image, Category
 from .serialization import ArticleSerialization
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 
 def index(request):
-    return render(request, "startPage.html", {"articles": Article.objects.all()} )
+    articles_obj = Article.objects.all()
+    paginator = Paginator(articles_obj, 6)
+    page_number = request.GET.get("page")
+    articles = paginator.get_page(page_number)
+    return render(request, "startPage.html", {"articles": articles} )
 
 def about_us(request):
     return render(request, "aboutUs.html")
@@ -42,18 +46,25 @@ def create_article(request):
 def edit_article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
+        form = ArticleForm(request.POST, instance=article)
+        images = request.FILES.getlist('image')
         if form.is_valid():
-                article = form.save(commit=False)
-                article.author = request.user
-                article.save()
-                return redirect(index) 
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
 
-    return render(request, 'editArticle.html', {'article': article})
+            Image.objects.filter(article=article).delete()
+            for i in images:
+                new_image = Image(image=i, article=article)
+                new_image.save()
+            return redirect(index)
+    else:
+        form = ArticleForm(instance=article)
+
+    return render(request, 'editArticle.html', {'form': form, 'article': article})
 
 def delete_article(request, article_id):
-    article = Article.objects.get(id=article_id)
-    article.delete()
+    article =Article.objects.get(id=article_id).delete()
     return redirect(index)
 
 
@@ -68,6 +79,31 @@ def sign_up(request):
         form = RegisterForm()
         
         return render(request, 'registration/sign_up.html', {"form": form})
+    
+def parks_category(request):
+    category = Category.objects.get(title='Parki')
+    articles = Article.objects.filter(category = category)
+    return render(request, "parks.html", {"category": category, "articles": articles})
+
+def museums_category(request):
+    category = Category.objects.get(title='Muzeji')
+    articles = Article.objects.filter(category = category)
+    return render(request, "museums.html", {"category": category, "articles": articles})
+
+def lakes_category(request):
+    category = Category.objects.get(title='Ezeri')
+    articles = Article.objects.filter(category = category)
+    return render(request, "lakes.html", {"category": category, "articles": articles})
+
+def churches_category(request):
+    category = Category.objects.get(title='Baznīcas')
+    articles = Article.objects.filter(category = category)
+    return render(request, "churches.html", {"category": category, "articles": articles})
+
+def other_category(request):
+    category = Category.objects.get(title='Cits')
+    articles = Article.objects.filter(category = category)
+    return render(request, "other.html", {"category": category, "articles": articles})
     
 @api_view(['GET'])
 def ArticleListAPI(request):

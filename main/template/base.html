@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
-    <link rel="stylesheet" href="{% static 'CSS/form.css' %}">
     <title>{% block title %}Django project{% endblock title %}</title>
 </head>
 <body>
@@ -23,9 +22,11 @@
           {% if user.is_authenticated %}
           <li class="nav-item"><a href="{% url 'create' %}" class="nav-link text-dark" aria-current="page">Pievienot rakstu!</a></li>
           {% endif %}
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Latvijā</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-dark">Ārzemēs</a></li>
-          <li class="nav-item"><a href="{% url 'aboutUs' %}" class="nav-link text-dark font-weight-bold">Par mums</a></li>
+          <li class="nav-item"><a href="{% url 'parks' %}" class="nav-link text-dark">Parki</a></li>
+          <li class="nav-item"><a href="{% url 'museums' %}" class="nav-link text-dark">Muzeji</a></li>
+          <li class="nav-item"><a href="{% url 'churches' %}" class="nav-link text-dark">Baznīcas</a></li>
+          <li class="nav-item"><a href="{% url 'lakes' %}" class="nav-link text-dark">Ezeri</a></li>
+          <li class="nav-item"><a href="{% url 'other' %}" class="nav-link text-dark">Cits</a></li>
           {% if user.is_authenticated %}
           <li class="nav-item"><a href="/auth/logout/" class="nav-link text-dark">Iziet!</a></li>
           {% else %}
@@ -42,10 +43,12 @@
         <p class="col-md-4 mb-0 text-body-secondary">Rēzekne, 2023</p>
     
         <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Latvijā</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Ārzemēs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Par mums</a></li>
+          <li class="nav-item"><a href="{% url 'parks' %}" class="nav-link px-2 text-body-secondary">Parki</a></li>
+          <li class="nav-item"><a href="{% url 'museums' %}" class="nav-link px-2 text-body-secondary">Muzeji</a></li>
+          <li class="nav-item"><a href="{% url 'churches' %}" class="nav-link px-2 text-body-secondary">Baznīcas</a></li>
+          <li class="nav-item"><a href="{% url 'lakes' %}" class="nav-link px-2 text-body-secondary">Ezeri</a></li>
+          <li class="nav-item"><a href="{% url 'other' %}" class="nav-link px-2 text-body-secondary">Cits</a></li>
+          <li class="nav-item"><a href="{% url 'about-us' %}" class="nav-link px-2 text-body-secondary">Par mums</a></li>
           <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Ieiet!</a></li>
         </ul>
       </footer>
@@ -53,7 +56,7 @@
   </div>
   
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>

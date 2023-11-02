@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Ezeri{% endblock title %}
+
+{% block content %}
+    <h3>{{ category.title }}</h3>
+    <hr>
+    <p style="font-weight: bold; font-style: italic;">{{category.description}}</p>
+    <hr><br>
+    {% for article in articles %}
+    <div class="article-item py-3 mb-4" style="background-color: rgb(240, 249, 253);">
+     <a href="{% url 'article' article.id %}" class="article-link">
+         <h3>{{ article.title }}</h3>
+         <p>{{article.text}}</p>
+         <p>{{ article.pub_date }}</p>
+         {% if article.category != None %}
+         {% endif %}
+     </a>
+     {% if article.author == user %}
+         <p>
+             <a href="{% url 'edit' article.id %}" class="link-secondary">Rediģēt rakstu</a> | 
+             <a href="{% url 'delete' article.id %}" class="link-secondary">Dzēst rakstu</a>
+         </p>
+     {% endif %}
+    </div>
+     {% endfor %}
+{% endblock content %}
