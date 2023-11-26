@@ -5,7 +5,8 @@ from .forms import ArticleForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator
 from .models import Article, Image, Category
-from .serialization import ArticleSerialization
+from django.contrib.auth.models import User
+from .serialization import *
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -109,5 +110,17 @@ def other_category(request):
 def ArticleListAPI(request):
     result = Article.objects.all()
     message = ArticleSerialization(result, many=True)
+    return Response(message.data)
+
+@api_view(['GET'])
+def CategoryListAPI(request):
+    result = Category.objects.all()
+    message = CategorySerializer(result, many=True)
+    return Response(message.data)
+
+@api_view(['GET'])
+def AuthorListAPI(request):
+    result = User.objects.all()
+    message = UserSerializer(result, many=True)
     return Response(message.data)
 

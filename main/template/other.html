@@ -4,7 +4,7 @@
 
 {% block content %}
     <h3>{{ category.title }}</h3>
-    <br>
+    <hr><br>
     {% for article in articles %}
     <div class="article-item py-3 mb-4" style="background-color: rgb(240, 249, 253);">
      <a href="{% url 'article' article.id %}" class="article-link">

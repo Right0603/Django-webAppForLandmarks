@@ -12,6 +12,8 @@ urlpatterns = [
     path("aboutUs/", views.about_us, name="about-us"),
     path("sign-up/", views.sign_up, name="sign-up"),
     path('articles/', views.ArticleListAPI),
+    path('categories/', views.CategoryListAPI),
+    path('users/', views.AuthorListAPI),
     path("edit/<int:article_id>/", views.edit_article, name="edit"),
     path("delete/<int:article_id>/", views.delete_article, name="delete"),
     path("museums/", views.museums_category, name="museums"),
