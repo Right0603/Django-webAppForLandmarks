@@ -1,7 +1,10 @@
-! PAŠLAIK PROJEKTS ATRODAS IZSTRĀDES STADIJĀ !
+# Tīmekļa lietotne, apskates objektu pievienošanai
 
-Tiek paredzēts izstrādāt nelielu portālu, kur iekviens varēs izlasīt rakstus par dažādiem apskates objektiem un vietām. 
-Pievienot rakstus būs iespēja ikvienam autorizētam lietotājam.
-Raksti tiks sadalīti pa kategorijām.
+### Apraksts
+Tā ir neliela tīmekļa lietotne, izmanotjot kuru var:
+
+* Apskatīt rakstus par dažādiem apskates objektiem
+* Atorizējoties, pievienot savus rakstus par dažādiem apskates objektiem
+* Izmantot lietotnes API savām vajadzībām
 
 
