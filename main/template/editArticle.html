@@ -8,7 +8,7 @@
 
     <form method="POST" action="/edit/{{article.id}}/" enctype="multipart/form-data">
         {% csrf_token %}
-            
+        {{ form.media }}
                     <div class="mb-3">
                         <label for="id_title" class="form-label">Virsraksts:</label>
                         {{ form.title }}

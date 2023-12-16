@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import Article, Image
+from tinymce.widgets import TinyMCE
 
 class ArticleForm(ModelForm):
     class Meta:
@@ -10,7 +11,7 @@ class ArticleForm(ModelForm):
         fields = ['title', 'text', 'category']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'text': TinyMCE(attrs={'rows': 18}),
             'category': forms.Select(attrs={'class': 'form-control'}),
         }
 

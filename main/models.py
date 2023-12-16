@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+from tinymce.models import HTMLField
 
 class Category(models.Model):
    title = models.CharField(max_length=60)
@@ -14,7 +15,7 @@ class Category(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=60)
-    text = models.TextField()
+    text = HTMLField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     pub_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
